@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 function SearchMovies() {
 
     const [query, setQuery] = useState('');
+    const [movies, setMovies] = useState([]);
 
     const searchMovies = async (event) => {
         event.preventDefault();
@@ -13,6 +14,7 @@ function SearchMovies() {
             const res = await fetch(url);
             const data = await res.json();
             console.log(data);
+            setMovies(data.results);
         } catch (err) {
             console.error(err);
         }
